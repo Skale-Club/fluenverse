@@ -1,6 +1,6 @@
-# Fluenverse - Base Next.js
+# Fluenverse
 
-Estrutura genérica para iniciar um projeto com Next.js (App Router) e TypeScript.
+Aplicacao Next.js com landing page, survey de qualificacao, painel administrativo e integracoes com Supabase.
 
 ## Rodando localmente
 
@@ -9,43 +9,33 @@ npm install
 npm run dev
 ```
 
-Aplicação em `http://localhost:3000`.
+O projeto sobe em `http://localhost:5000`.
 
-## Envio de survey por e-mail
+## Variaveis principais
 
-O submit do survey chama `POST /api/survey` e envia o resultado por SMTP.
-
-Configure no `.env.local`:
+Configure no `.env.local` o que for necessario para o seu ambiente:
 
 ```bash
-SURVEY_SMTP_HOST=smtp.gmail.com
-SURVEY_SMTP_PORT=587
-SURVEY_SMTP_SECURE=false
-SURVEY_SMTP_USER=seu-usuario-smtp
-SURVEY_SMTP_PASS=sua-senha-ou-app-password
-SURVEY_FROM_EMAIL=Fluenverse@gmail.com
-SURVEY_TO_EMAIL=Fluenverse@gmail.com
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+SUPABASE_SERVICE_ROLE_KEY=
+DATABASE_URL=
+
+SURVEY_SMTP_HOST=
+SURVEY_SMTP_PORT=
+SURVEY_SMTP_SECURE=
+SURVEY_SMTP_USER=
+SURVEY_SMTP_PASS=
+SURVEY_FROM_EMAIL=
+SURVEY_TO_EMAIL=
 ```
 
-## Estrutura
+## Assets publicos
 
-```text
-.
-|-- app/
-|   |-- about/page.tsx
-|   |-- api/health/route.ts
-|   |-- globals.css
-|   |-- layout.tsx
-|   `-- page.tsx
-|-- components/
-|   `-- section.tsx
-|-- lib/
-|   `-- utils.ts
-|-- public/
-|   `-- logo.svg
-|-- .eslintrc.json
-|-- next.config.mjs
-|-- package.json
-|-- tsconfig.json
-`-- README.md
+Os assets do front sao resolvidos por `lib/public-assets.ts`, apontando para o bucket configurado no Supabase.
+
+Se precisar reenviar arquivos locais para esse bucket:
+
+```bash
+npm run assets:upload-public
 ```

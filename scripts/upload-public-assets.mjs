@@ -57,7 +57,9 @@ if (!supabaseUrl || !serviceRoleKey) {
 }
 
 if (!existsSync(publicDir)) {
-  throw new Error(`Public directory not found: ${publicDir}`);
+  console.log(`Public directory not found: ${publicDir}`);
+  console.log("Nothing to upload.");
+  process.exit(0);
 }
 
 const supabase = createClient(supabaseUrl, serviceRoleKey, {
