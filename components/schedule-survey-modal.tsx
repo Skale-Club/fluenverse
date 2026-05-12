@@ -213,11 +213,11 @@ export function ScheduleSurveyModal({ open, locale, onClose, gaEventNames, fbEve
       });
   }, [open]);
 
-  const [phoneCountry, setPhoneCountry] = useState<'BR' | 'US' | 'CA'>(locale === 'pt' ? 'BR' : 'US');
+  const [phoneCountry, setPhoneCountry] = useState<'BR' | 'US' | 'CA'>('US');
   const [showCountries, setShowCountries] = useState(false);
 
   useEffect(() => {
-    setPhoneCountry(locale === 'pt' ? 'BR' : 'US');
+    setPhoneCountry('US');
   }, [locale, open]);
 
   const formatPhoneNumber = (value: string, country: 'BR' | 'US' | 'CA') => {
